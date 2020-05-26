@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="nucleo" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d8337a1a-2cbd-4943-a20b-d0b0cea5e817">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="codDepartamento" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[SELECT
+     nucleo.`numeroRegistroNucleo` AS nucleo_numeroRegistroNucleo,
+     nucleo.`nomeNucleo` AS nucleo_nomeNucleo,
+     nucleo.`numeroRegistroDepartamento` AS nucleo_numeroRegistroDepartamento,
+     departamento.`numeroRegistroDepartamento` AS departamento_numeroRegistroDepartamento,
+     departamento.`nomeDepartamento` AS departamento_nomeDepartamento,
+     departamento.`numeroRegistroCampus` AS departamento_numeroRegistroCampus
+FROM
+     `departamento` departamento INNER JOIN `nucleo` nucleo ON departamento.`numeroRegistroDepartamento` = nucleo.`numeroRegistroDepartamento`
+
+where $P{codDepartamento}=departamento.`numeroRegistroDepartamento`]]>
+	</queryString>
+	<field name="nucleo_numeroRegistroNucleo" class="java.lang.Integer"/>
+	<field name="nucleo_nomeNucleo" class="java.lang.String"/>
+	<field name="nucleo_numeroRegistroDepartamento" class="java.lang.Integer"/>
+	<field name="departamento_numeroRegistroDepartamento" class="java.lang.Integer"/>
+	<field name="departamento_nomeDepartamento" class="java.lang.String"/>
+	<field name="departamento_numeroRegistroCampus" class="java.lang.Integer"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="46dba2ad-4343-4853-be9d-63b0b5808efa"/>
+				<staticText>
+					<reportElement x="20" y="20" width="234" height="43" forecolor="#FFFFFF" uuid="8dd52c25-44f8-4517-9bed-057db4c8b713"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Núcleo]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="395" y="43" width="180" height="20" forecolor="#FFFFFF" uuid="932e0d01-26ac-49cb-8e7d-cb791dfed88b"/>
+					<textElement textAlignment="Right">
+						<font size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21">
+			<line>
+				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="dddcf846-fff5-41ff-8d04-b46d8fc35108"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="185" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="5db3960c-746e-4937-9e97-14a97e2a5c03"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Número Núcleo	]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="185" y="0" width="185" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="c230ab70-fbbe-4527-a82d-5cfb3a8aaaef"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nome]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="370" y="0" width="185" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="040f4d42-fb5c-458a-b858-8373a5529255"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Departamento]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="a5bfe694-a6da-4063-9663-d984c0e8dd49"/>
+			</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="0" y="0" width="185" height="20" uuid="af404011-91ab-497a-9f9b-f90bf35e6bac"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nucleo_numeroRegistroNucleo}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="185" y="0" width="185" height="20" uuid="ace3fba0-0733-4e9a-8f61-929f285857ff"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nucleo_nomeNucleo}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="370" y="0" width="185" height="20" uuid="3df39c85-8272-4ab3-af1d-8b7d9aa605ef"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{departamento_nomeDepartamento}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="6e3669b7-1968-4697-8796-9feec90f4066"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="f016ea97-3498-457d-b33d-c80609c02d64"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="13" uuid="5590f5ee-2d63-4877-b071-f0ac662ad472"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

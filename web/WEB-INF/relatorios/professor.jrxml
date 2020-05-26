@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="professor" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ca90b8c3-3036-4448-a0fc-861170fbf5b8">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     usuario.`cpf` AS usuario_cpf,
+     usuario.`login` AS usuario_login,
+     usuario.`senha` AS usuario_senha,
+     usuario.`nomeCompleto` AS usuario_nomeCompleto,
+     usuario.`naturalidade` AS usuario_naturalidade,
+     usuario.`nacionalidade` AS usuario_nacionalidade,
+     usuario.`rg` AS usuario_rg,
+     usuario.`orgaoExpedidor` AS usuario_orgaoExpedidor,
+     usuario.`ufrg` AS usuario_ufrg,
+     usuario.`dataNascimento` AS usuario_dataNascimento,
+     usuario.`email` AS usuario_email,
+     usuario.`tipoUsuario` AS usuario_tipoUsuario,
+     usuario.`endereco` AS usuario_endereco,
+     professor.`numeroRegistroProfessor` AS professor_numeroRegistroProfessor,
+     professor.`areaAtuacao` AS professor_areaAtuacao,
+     professor.`Usuario_cpf` AS professor_Usuario_cpf
+FROM
+     `usuario` usuario INNER JOIN `professor` professor ON usuario.`cpf` = professor.`Usuario_cpf`]]>
+	</queryString>
+	<field name="professor_numeroRegistroProfessor" class="java.lang.Integer"/>
+	<field name="usuario_cpf" class="java.lang.Integer"/>
+	<field name="usuario_nomeCompleto" class="java.lang.String"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="24b60715-e56e-4c0b-812d-b22e86865606"/>
+				<staticText>
+					<reportElement x="20" y="20" width="234" height="43" forecolor="#FFFFFF" uuid="f141c3e9-ce00-4956-8d5e-40c09918791e"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Professor]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="395" y="43" width="180" height="20" forecolor="#FFFFFF" uuid="48859957-4b93-4a73-a71e-5013acb09852"/>
+					<textElement textAlignment="Right">
+						<font size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21">
+			<line>
+				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="71cd556a-5eed-407c-a884-98d3544c7554"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="185" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="e8283c05-845f-4a2e-85a9-f65ce07cdf03"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Numero ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="185" y="0" width="185" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="751030c0-43e5-456a-a13a-c254e2dd441e"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CPF]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="370" y="0" width="185" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="5f4f0172-c12d-4ad3-9cfb-8dfe3d769325"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nome]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="0935472b-1922-4261-b63d-3b0c48a13a99"/>
+			</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="0" y="0" width="185" height="20" uuid="0bff39b2-39b8-4b3e-ace0-d5c5ac8154d6"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{professor_numeroRegistroProfessor}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="185" y="0" width="185" height="20" uuid="10cf1c0b-a852-4bfb-82c5-dd32330c592d"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{usuario_cpf}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="370" y="0" width="185" height="20" uuid="c31d360f-0489-481e-ba78-978f70f25c07"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{usuario_nomeCompleto}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="504ec001-beec-4985-b1bd-760450ff6526"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="c7ff57b8-9d02-44a2-9894-8a2ce6392fa7"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="13" uuid="b789ff2b-e188-4b82-8e5a-b89480cbbd51"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

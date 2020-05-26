@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="edital" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8279462d-a06a-4380-9476-8dea1becf418">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="codCampus" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[SELECT
+     edital.`numeroRegistroEdital` AS edital_numeroRegistroEdital,
+     edital.`dataInicio` AS edital_dataInicio,
+     edital.`dataTermino` AS edital_dataTermino,
+     edital.`vagas` AS edital_vagas,
+     edital.`nomeEdital` AS edital_nomeEdital,
+     edital.`implementacao` AS edital_implementacao,
+     edital.`numeroRegistroCampus` AS edital_numeroRegistroCampus,
+     campus.`numeroRegistroCampus` AS campus_numeroRegistroCampus,
+     campus.`nomeCampus` AS campus_nomeCampus
+FROM
+     `campus` campus INNER JOIN `edital` edital ON campus.`numeroRegistroCampus` = edital.`numeroRegistroCampus`
+
+where $P{codCampus}= campus.`numeroRegistroCampus`]]>
+	</queryString>
+	<field name="edital_numeroRegistroEdital" class="java.lang.Integer"/>
+	<field name="edital_dataInicio" class="java.lang.String"/>
+	<field name="edital_dataTermino" class="java.lang.String"/>
+	<field name="edital_vagas" class="java.lang.String"/>
+	<field name="edital_nomeEdital" class="java.lang.String"/>
+	<field name="edital_implementacao" class="java.lang.String"/>
+	<field name="edital_numeroRegistroCampus" class="java.lang.Integer"/>
+	<field name="campus_numeroRegistroCampus" class="java.lang.Integer"/>
+	<field name="campus_nomeCampus" class="java.lang.String"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="5346aaa7-8bb5-4429-8334-63114f6119a2"/>
+				<staticText>
+					<reportElement x="20" y="20" width="234" height="43" forecolor="#FFFFFF" uuid="fd644586-e0e8-4c8d-b22a-3c40178521a4"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Edital]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="395" y="43" width="180" height="20" forecolor="#FFFFFF" uuid="bc7f0e3a-9b70-440f-9b4c-f74ea39f340f"/>
+					<textElement textAlignment="Right">
+						<font size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21">
+			<line>
+				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="2d5a0fcb-3d23-4510-bd80-6301d7d8bd2c"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="138" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="e8f1aa26-adcc-46b1-91a6-ba4f3b014d97"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Número edital	]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="138" y="0" width="138" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="21053e3b-fcb4-4fe3-90d7-7954646e2c39"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nome]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="276" y="0" width="138" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="33a9fe8c-7b0e-48a8-8140-efc0acecf539"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Implementacao]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="414" y="0" width="138" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="ba0ec282-c911-446a-aa8e-3df45a120e06"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Câmpus]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="f8d89139-9fda-42f9-a79e-bd2519880a53"/>
+			</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="0" y="0" width="138" height="20" uuid="5dc15f63-3ce1-4357-9558-6ab20b08ea12"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{edital_numeroRegistroEdital}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="138" y="0" width="138" height="20" uuid="7ba56ce1-5155-4316-849e-8b436b64165a"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{edital_nomeEdital}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="276" y="0" width="138" height="20" uuid="289087e3-c6ae-4cc8-83dc-e1f915e1d0bc"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{edital_implementacao}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="414" y="0" width="138" height="20" uuid="0bb00339-0704-411c-b264-591dea15bbdc"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{campus_nomeCampus}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="4322140f-0020-45ca-9e10-3343c61ee814"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="9fb4630c-cfa1-403f-a31f-d2f4e641b2eb"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="13" uuid="ee401d6d-5ba1-48d3-a6b0-c0b3e81c802a"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>
